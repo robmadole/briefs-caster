@@ -1,0 +1,7 @@
+Development setup
+=================
+
+To create a buildout,
+
+  $ python bootstrap.py
+  $ bin/buildout

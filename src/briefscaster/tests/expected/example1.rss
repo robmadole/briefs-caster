@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+    <channel>
+        <title>Briefs caster server on http://localhost/</title>
+        <link>http://localhost/</link>
+        <description>Serving up some fine briefs from {{ src }}</description>
+        <language>en-us</language>
+        <pubDate>{{ pub_date }}</pubDate>
+        <lastBuildDate>{{ pub_date }}</lastBuildDate>
+        
+            
+            <item>
+                <title>example1.brieflist</title>
+                <enclosure url="http://localhost/brieflist/78ded3ff3d3f4b947f6a5073e7e31093081f4f26" length="27980" type="application/brief" />
+                <description>{{ here }}/briefcasts/example1/example1.brieflist</description>
+                <pubDate>Thu, 23 Sep 2010 16:26:05 GMT</pubDate>
+                <guid>78ded3ff3d3f4b947f6a5073e7e31093081f4f26</guid>
+            </item>
+        
+    </channel>
+</rss>

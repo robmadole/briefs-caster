@@ -1,0 +1,22 @@
+start: Scene 1
+
+scene: Scene 1
+image: images/scene-01.png
+    actor: Scene 1 next
+        size: 320,480
+        pos: 0,0
+        action: goto(Scene 2, pushLeft)
+
+scene: Scene 2
+image: images/scene-02.png
+    actor: Scene 2 next
+        size: 320,480
+        pos: 0,0
+        action: goto(Scene 3, pushLeft)
+    
+scene: Scene 3
+image: images/scene-03.png
+    actor: Scene 3 next
+        size: 320,480
+        pos: 0,0
+        action: goto(Scene 1, zoomOut)
