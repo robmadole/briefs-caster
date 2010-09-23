@@ -10,7 +10,7 @@ Cocoa touch applications.
 This is an insanely cool app, and much props go to `Digital Arch
 <http://digitalarch.com>`_.
 
-So check it out first, http://getabrief.com.  Ignore briefs-caster if you don't
+So check it out first, http://giveabrief.com.  Ignore briefs-caster if you don't
 fall in sappy love with Briefs, this will do you no good.
 
 At some point, while going through the documentation, you will `see some XML
