@@ -5,7 +5,7 @@ from os.path import join, basename, getsize, getmtime
 
 from jinja2 import Template
 
-from briefscaster import working_directory
+from briefscaster import config
 
 _briefslist_cache = {}   # The last discovered brieflists
 
@@ -96,7 +96,7 @@ def create_feed(items, url_root):
         'title':
             'Briefs caster server on %s' % url_root,
         'description':
-            'Serving up some fine briefs from %s' % working_directory,
+            'Serving up some fine briefs from %s' % config['working_directory'],
         'url_root': url_root,
         'pub_date': time.strftime(GMT_FORMAT, time.gmtime()),
         'items': _briefslist_cache}

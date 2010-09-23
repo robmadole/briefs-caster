@@ -4,7 +4,9 @@ import os
 from flask import Flask, request, abort
 
 app = Flask(__name__)
-working_directory = os.getcwd()
+
+config = {
+    'working_directory': os.getcwd()}
 
 
 @app.route('/')
@@ -12,7 +14,7 @@ def provide_briefcast():
     from briefscaster import briefcast
 
     url_root = request.url_root
-    items = briefcast.find_brieflists(working_directory)
+    items = briefcast.find_brieflists(config['working_directory'])
 
     rss_string = briefcast.create_feed(
         items,
@@ -39,7 +41,7 @@ def brieflist(key):
 
 def main():
     try:
-        working_directory = sys.argv[1]
+        config['working_directory'] = sys.argv[1]
     except IndexError:
         pass
 
