@@ -8,7 +8,7 @@ from os.path import join, basename, getsize, getmtime, dirname
 
 from jinja2 import Template
 
-from briefscaster import config
+from briefscaster import config, get_briefs_utils
 
 _briefs_cache = {}   # The last discovered brieflists
 
@@ -63,8 +63,7 @@ def create_brieflist(brief):
     Creates a brieflist from a brief script.  This uses the bs and
     compact-briefs utilities found in the briefscaster/bin directory.
     """
-    bs_binary = join(dirname(__file__), 'bin', 'bs')
-    compact_briefs_binary = join(dirname(__file__), 'bin', 'compact-briefs')
+    bs_binary, compact_briefs_binary = get_briefs_utils()
 
     # Change directories where the brief is
     os.chdir(dirname(brief))

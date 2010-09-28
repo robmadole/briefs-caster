@@ -5,8 +5,7 @@ here = os.path.abspath(os.path.dirname(__file__))
 README = open(os.path.join(here, 'README.rst')).read()
 NEWS = open(os.path.join(here, 'NEWS.txt')).read()
 
-
-version = '0.1'
+version = '0.1.1'
 
 install_requires = [
     'Flask>=0.6',
@@ -33,6 +32,8 @@ setup(name='briefs-caster',
     package_dir = {'': 'src'},include_package_data=True,
     zip_safe=False,
     install_requires=install_requires,
+    scripts=['src/briefscaster/bin/bc-bs',
+        'src/briefscaster/bin/bc-compact-briefs'],
     entry_points={
         'console_scripts':
             ['briefs-caster=briefscaster:main']

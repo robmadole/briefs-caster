@@ -1,7 +1,9 @@
 import sys
 import os
+from os.path import dirname, join
 
 from flask import Flask, request, abort
+
 
 app = Flask(__name__)
 
@@ -55,5 +57,23 @@ def main():
     print 'CTRL-C to exit the server'
     app.run('0.0.0.0')
 
+
+def get_briefs_utils():
+    """
+    Trys to povide an executable bs and compact-briefs utilities
+    """
+    local_bs = join(dirname(__file__), 'bin', 'bc-bs')
+    local_compact_briefs = join(dirname(__file__), 'bin', 'bc-compact-briefs')
+
+    if os.access(local_bs, os.X_OK) and \
+       os.access(local_compact_briefs, os.X_OK):
+        # The local versions are executable, we will use those
+        return (local_bs, local_compact_briefs,)
+    else:
+        # Assume that briefs-caster has been installed with easy_install or pip
+        # and guess that they are on the path
+        return ('bc-bs', 'bc-compact-briefs',)
+
 if __name__ == '__main__':
+    get_briefs_utils()
     main()
