@@ -1,6 +1,14 @@
 News
 ====
 
+0.1.1
+-----
+
+*Release date: 28-Sep-2010
+
+* Added the ability for briefs-caster to automatically convert your .bs files for you
+  you no longer need to generate the .brieflist files manually
+
 0.1
 ---
 

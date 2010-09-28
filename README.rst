@@ -4,20 +4,13 @@ briefs-caster
 What is it?
 -----------
 
+This is a simple Briefcasts server for your Briefs.
+
 `Rob Rhyne <http://robrhyne.com/>`_ developed Briefs, an iPhone application for creating wireframes for
 Cocoa touch applications.
 
 This is an insanely cool app, and much props go to `Digital Arch
-<http://digitalarch.com>`_.
-
-So check it out first, http://giveabrief.com.  Ignore briefs-caster if you don't
-fall in sappy love with Briefs, this will do you no good.
-
-At some point, while going through the documentation, you will `see some XML
-<http://giveabrief.com/docs/share.html>`_.  I
-want to warn you about this, because no one warned me and I still have that bile
-taste in my mouth from the shock of it.  This XML is used in constructing a
-Briefcast.
+<http://digitalarch.com>`_.  Check it out first, http://giveabrief.com.
 
 Briefcasts and briefs-caster
 ----------------------------
@@ -25,11 +18,15 @@ Briefcasts and briefs-caster
 Within Briefs, you can add a URL that points to a list of briefs.  In the app,
 it's called **My Briefcasts**.
 
-briefs-caster serves up any ``.brieflist`` file it
-finds in a directory you specify and can be entered into the Briefcasts section.
+briefs-caster converts any ``.bs`` files into ``.brieflist`` files using the
+utilities provided by `the Briefs starter kit
+<http://giveabrief.com/files/starterkit.zip>`_ and serves them up on
+http://0.0.0.0:5000 as a Briefcast.
 
 Installation
 ------------
+
+*Requires Mac OS X*
 
 briefs-caster uses Python.  To install it open a terminal and type the following
 
@@ -47,8 +44,8 @@ Usage
 -----
 
 We're going to assume that you've installed Briefs and have started using it.
-You should be to the point that you have a ``*.brieflist`` file that you've
-created by first using the ``bs`` script and then the ``compact-briefs`` script.
+You should be to the point that you have a ``.bs`` file that you've
+created.
 
 Let's pretend it's in a directory called ``~/my_briefs``.
 
@@ -70,6 +67,17 @@ You should see the following output ::
     CTRL-C to exit the server
     * Running on http://0.0.0.0:5000/
 
+Errors
+------
+
+Check the terminal for any errors that the Briefs script utililty produces.  If
+you mis-type something, forget a required attribute or something like that it
+will show up in the output.
+
+
+Add to Briefs
+-------------
+
 In the Briefs app do the following:
 
 #. Touch **My Briefcasts**
@@ -83,6 +91,6 @@ In the Briefs app do the following:
 
 Now you are ready to try it out:
 
-#. Touch **Briefs-caster example** cell
+#. Touch **Briefs-caster example**
 
 If everything went as expected, you should see your list of Briefs.
