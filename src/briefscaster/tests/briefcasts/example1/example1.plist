@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>start_scene</key>
+	<integer>0</integer>
+	<key>scenes</key>
+	<array>
+		<dict>
+			<key>img</key>
+			<string>images/scene-01.png</string>
+			<key>name</key>
+			<string>scene 1</string>
+			<key>actors</key>
+			<array>
+				<dict>
+					<key>x</key>
+					<integer>0</integer>
+					<key>y</key>
+					<integer>0</integer>
+					<key>width</key>
+					<integer>320</integer>
+					<key>height</key>
+					<integer>480</integer>
+					<key>visible</key>
+					<true/>
+					<key>scrollable</key>
+					<false/>
+					<key>name</key>
+					<string>scene 1 next</string>
+					<key>action</key>
+					<string>goto(1, pushLeft)</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>img</key>
+			<string>images/scene-02.png</string>
+			<key>name</key>
+			<string>scene 2</string>
+			<key>actors</key>
+			<array>
+				<dict>
+					<key>x</key>
+					<integer>0</integer>
+					<key>y</key>
+					<integer>0</integer>
+					<key>width</key>
+					<integer>320</integer>
+					<key>height</key>
+					<integer>480</integer>
+					<key>visible</key>
+					<true/>
+					<key>scrollable</key>
+					<false/>
+					<key>name</key>
+					<string>scene 2 next</string>
+					<key>action</key>
+					<string>goto(2, pushLeft)</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>img</key>
+			<string>images/scene-03.png</string>
+			<key>name</key>
+			<string>scene 3</string>
+			<key>actors</key>
+			<array>
+				<dict>
+					<key>x</key>
+					<integer>0</integer>
+					<key>y</key>
+					<integer>0</integer>
+					<key>width</key>
+					<integer>320</integer>
+					<key>height</key>
+					<integer>480</integer>
+					<key>visible</key>
+					<true/>
+					<key>scrollable</key>
+					<false/>
+					<key>name</key>
+					<string>scene 3 next</string>
+					<key>action</key>
+					<string>goto(0, zoomOut)</string>
+				</dict>
+			</array>
+		</dict>
+	</array>
+</dict>
+</plist>

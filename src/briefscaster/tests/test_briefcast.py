@@ -3,6 +3,7 @@ import time
 
 from flask import request
 from jinja2 import Environment, FileSystemLoader
+from nose.plugins.attrib import attr
 
 from briefscaster import app
 from briefscaster import briefcast
@@ -26,7 +27,7 @@ class TestBriefcast(unittest.TestCase):
         self.client = app.test_client()
 
     def test_will_provide_rss(self):
-        items = briefcast.find_brieflists(HERE)
+        items = briefcast.find_briefs(HERE)
 
         with app.test_request_context('/'):
             url_root = request.url_root
@@ -42,31 +43,32 @@ class TestBriefcast(unittest.TestCase):
             self.assertEqual(rss, expected)
 
     def test_build_cache(self):
-        items = briefcast.find_brieflists(HERE)
+        items = briefcast.find_briefs(HERE)
 
         url_root = 'http://127.0.0.1:5000/'
 
-        cache = briefcast.create_brieflist_cache(items, url_root)
+        cache = briefcast.create_briefs_cache(items, url_root)
 
         key1, item1 = cache.items()[0]
 
-        expected_hash = '78ded3ff3d3f4b947f6a5073e7e31093081f4f26'
+        expected_hash = 'd27249fce1889f04b3471633826f043de0bafd2b'
 
         self.assertDictEqual({
+            'bs_filename': '%s/briefcasts/example1/example1.bs' % HERE, 
             'filename': '%s/briefcasts/example1/example1.brieflist' % HERE,
-            'description': '%s/briefcasts/example1/example1.brieflist' % HERE,
+            'description': 'Output from example1.bs',
             'title': 'example1.brieflist',
             'url': '%sbrieflist/%s' % (url_root, expected_hash,),
             'length': 27980, 'guid': '%s' % expected_hash,
-            'pub_date': 'Thu, 23 Sep 2010 16:26:05 GMT'},
+            'pub_date': item1['pub_date']},
             item1)
 
-    def test_find_brieflists(self):
-        brieflists = [i for i in briefcast.find_brieflists(HERE)]
+    def test_find_briefs(self):
+        briefs = [i for i in briefcast.find_briefs(HERE)]
 
-        item1 = brieflists[0]
+        item1 = briefs[0]
 
-        self.assertEquals('%s/briefcasts/example1/example1.brieflist' % HERE,
+        self.assertEquals('%s/briefcasts/example1/example1.bs' % HERE,
             item1)
 
     def test_serves_briefcase(self):
@@ -76,17 +78,17 @@ class TestBriefcast(unittest.TestCase):
             '<title>Briefs caster server on http://localhost/</title>',
             response.data)
 
-    def test_serves_brieflist(self):
-        items = briefcast.find_brieflists(HERE)
+    def test_serves_briefs(self):
+        items = briefcast.find_briefs(HERE)
 
         with app.test_request_context('/'):
             url_root = request.url_root
 
             rss = briefcast.create_feed(items, url_root)
-            brieflist_cache = briefcast.get_brieflist_cache()
+            briefs_cache = briefcast.get_briefs_cache()
 
-            key = brieflist_cache.keys()[0]
+            key = briefs_cache.keys()[0]
 
             response = self.client.get('/brieflist/%s' % key)
 
-            self.assertNotEqual('', response.data)
+            self.assertEquals(briefs_cache[key]['length'], len(response.data))

@@ -6,7 +6,8 @@ from flask import Flask, request, abort
 app = Flask(__name__)
 
 config = {
-    'working_directory': os.getcwd()}
+    'working_directory': os.getcwd(),
+    'always_regenerate': True}
 
 
 @app.route('/')
@@ -14,7 +15,7 @@ def provide_briefcast():
     from briefscaster import briefcast
 
     url_root = request.url_root
-    items = briefcast.find_brieflists(config['working_directory'])
+    items = briefcast.find_briefs(config['working_directory'])
 
     rss_string = briefcast.create_feed(
         items,
@@ -28,12 +29,15 @@ def provide_briefcast():
 def brieflist(key):
     from briefscaster import briefcast
 
-    brieflist_cache = briefcast.get_brieflist_cache()
+    briefs_cache = briefcast.get_briefs_cache()
 
-    if not key in brieflist_cache:
+    if not key in briefs_cache:
         abort(404)
 
-    filename = brieflist_cache[key]['filename']
+    if config['always_regenerate']:
+        briefcast.create_brieflist(briefs_cache[key]['bs_filename'])
+
+    filename = briefs_cache[key]['filename']
 
     with open(filename) as f:
         return app.response_class(f.read(), mimetype='application/brief')

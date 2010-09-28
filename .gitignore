@@ -2,6 +2,7 @@
 
 .installed.cfg
 bin
+!src/briefscaster/bin
 develop-eggs
 
 *.egg-info

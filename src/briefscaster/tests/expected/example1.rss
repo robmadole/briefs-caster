@@ -11,10 +11,10 @@
             
             <item>
                 <title>example1.brieflist</title>
-                <enclosure url="http://localhost/brieflist/78ded3ff3d3f4b947f6a5073e7e31093081f4f26" length="27980" type="application/brief" />
-                <description>{{ here }}/briefcasts/example1/example1.brieflist</description>
-                <pubDate>Thu, 23 Sep 2010 16:26:05 GMT</pubDate>
-                <guid>78ded3ff3d3f4b947f6a5073e7e31093081f4f26</guid>
+                <enclosure url="http://localhost/brieflist/d27249fce1889f04b3471633826f043de0bafd2b" length="27980" type="application/brief" />
+                <description>Output from example1.bs</description>
+                <pubDate>Thu, 23 Sep 2010 16:25:15 GMT</pubDate>
+                <guid>d27249fce1889f04b3471633826f043de0bafd2b</guid>
             </item>
         
     </channel>
